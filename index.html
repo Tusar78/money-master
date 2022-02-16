@@ -19,7 +19,66 @@
     <title>Money Master</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <main class="l-main">
+      <section class="container custom-container rounded">
+        <h2 class="title">Budget Calculator 💸</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              class="img-fluid rounded"
+              src="./assets/images/money-6.jpg"
+              alt="Money picture"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="calculation">
+              <!-- Total Income -->
+              <div class="icome">
+                <label for="">Income: </label>
+                <input type="text" id="total-income" />
+              </div>
+              <!-- Expense section -->
+              <div class="Expence">
+                <h3 class="expence__title">Expenses</h3>
+                <div>
+                  <label for="#">Food: </label>
+                  <input type="text" id="food-cost" />
+                </div>
+                <div>
+                  <label for="#">Rent: </label>
+                  <input type="text" id="rent-cost" />
+                </div>
+                <div>
+                  <label for="#">Others: </label>
+                  <input type="text" id="other-cost" />
+                </div>
+              </div>
+              <!-- =-= Calculate button =-= -->
+              <button class="btn btn-success" id="calculate-btn">
+                Calculate
+              </button>
+              <h3 class="total-expense" id="total-expense">
+                Total Expense: 5000
+              </h3>
+              <h3 class="balance" id="balance">Balance: 5000</h3>
+
+              <!-- =-= saving section =-= -->
+              <div class="saveing-amount">
+                <label for="">save:</label>
+                <input type="text" />
+                <span>%</span>
+                <button class="btn btn-success">Save</button>
+              </div>
+
+              <h3 class="saving-amount">Saving Amount: <span>2000</span></h3>
+              <h3 class="saving-amount">
+                Remaining Balance: <span>2000</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- =-= Bootstrap Bundle with Popper =-= -->
     <script
