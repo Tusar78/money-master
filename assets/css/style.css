@@ -19,3 +19,49 @@ body {
   text-align: center;
 }
 
+.income {
+  padding-bottom: 1rem;
+}
+
+.calculate-btn {
+  padding: 0.625rem 1.875rem;
+  border-radius: 0.2rem;
+  border: none;
+  background-color: #9c62f9;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.expences__title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+}
+
+.total-expense,
+.balance {
+  padding: 0.75rem 1rem;
+  background-color: white;
+  border-radius: 0.4rem;
+}
+
+.total-expense h3,
+.balance h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+.saving-input {
+  border-right: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.percent {
+  display: grid;
+  place-items: center;
+  border-radius: 0 0.2rem 0.2rem 0;
+  padding: 0 1rem;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  font-size: 1.25rem;
+  border-left: 0;
+}
