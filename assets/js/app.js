@@ -28,4 +28,25 @@ calculateBtn.addEventListener('click', event => {
     remainingBalanceArea.innerText = balance;
 })
 
+// Get savings button
+const saveBtn = document.getElementById('save-btn');
+saveBtn.addEventListener('click', event => {
+    // get Save percent value
+    const savePercentText = document.getElementById('save-percent');
+    const savePercentNumber= parseFloat(savePercentText.value);
 
+    // get balance
+    const balanceArea = document.getElementById('balance'); 
+    const balanceMoney = parseFloat(balanceArea.innerText);
+
+    // Calculate percent
+    const getPercent = (balanceMoney * savePercentNumber) / 100;
+
+    // saving amount display area
+    const savingArea = document.getElementById('total-saving');
+    savingArea.innerText = getPercent;
+
+    // Remaining balance 
+    const remainingBalance = document.getElementById('remaining-balance');
+    remainingBalance.innerText = balanceMoney - getPercent;
+})
