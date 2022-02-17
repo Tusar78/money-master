@@ -5,63 +5,87 @@ const expenseValidation = () => {
   const foodCostNumber = parseFloat(foodCost.value);
   let foodCostValue;
   // Food cost error
-  const foodError = document.getElementById('food-error');
-  
+  const foodError = document.getElementById("food-error");
+
   const rentCost = document.getElementById("rent-cost");
   const rentCostNumber = parseFloat(rentCost.value);
   let rentCostValue;
   // Rent cost error
-  const rentError = document.getElementById('rent-error');
+  const rentError = document.getElementById("rent-error");
 
   const otherCost = document.getElementById("other-cost");
   const otherCostNumber = parseFloat(otherCost.value);
   let otherCostValue;
   // Other cost error
-  const otherError = document.getElementById('other-error');
+  const otherError = document.getElementById("other-error");
 
   // Food cost validation
   if (!isNaN(foodCostNumber)) {
     if (foodCostNumber < 0) {
       foodCost.value = "";
-      foodError.style.background = "green";
-      foodError.style.color = "#000";
-    //   foodError.innerText = `You can't enter the negative number!`;
-    console.log('Negative diona');
+      foodError.style.display = "block";
+      foodError.classList.add("negative-error");
+      foodError.classList.remove("number-error");
+      foodError.style.marginBottom = '1rem'
+      foodError.innerText = `You can't enter the negative number!`;
     } else {
       foodCostValue = foodCostNumber;
+      foodError.style.marginBottom = ''
       foodError.style.display = "none";
     }
   } else {
     foodCost.value = "";
-    foodError.style.background = "red";
-    // foodError.innerText = `Please, enter your income amount!`;
-    console.log('Amount daw');
+    foodError.style.display = "block";
+    foodError.classList.add("number-error");
+    foodError.classList.remove("negative-error");
+    foodError.style.marginBottom = '1rem'
+    foodError.innerText = `Please, enter your income amount!`;
   }
 
   // Rent cost validation
   if (!isNaN(rentCostNumber)) {
     if (rentCostNumber < 0) {
       rentCost.value = "";
-      console.log(`Your can not add negative number! rent`);
+      rentError.style.display = "block";
+      rentError.classList.add("negative-error");
+      rentError.classList.remove("number-error");
+      rentError.style.marginBottom = '1rem'
+      rentError.innerText = `You can't enter the negative number!`;
     } else {
       rentCostValue = rentCostNumber;
+      rentError.style.marginBottom = ''
+      rentError.style.display = "none";
     }
   } else {
     rentCost.value = "";
-    console.log("Please enter the valid number rent");
+    rentError.style.display = "block";
+    rentError.classList.add("number-error");
+    rentError.classList.remove("negative-error");
+    rentError.style.marginBottom = '1rem'
+    rentError.innerText = `Please, enter your income amount!`;
   }
 
   // Other cost validation
   if (!isNaN(otherCostNumber)) {
     if (otherCostNumber < 0) {
       otherCost.value = "";
-      console.log(`Your can not add negative number! other`);
+      otherError.style.display = "block";
+      otherError.classList.add("negative-error");
+      otherError.classList.remove("number-error");
+      otherError.style.marginBottom = '1rem'
+      otherError.innerText = `You can't enter the negative number!`;
     } else {
       otherCostValue = otherCostNumber;
+      otherError.style.marginBottom = ''
+      otherError.style.display = "none";
     }
   } else {
     otherCost.value = "";
-    console.log("Please enter the valid number other");
+    otherError.style.display = "block";
+    otherError.classList.add("number-error");
+    otherError.classList.remove("negative-error");
+    otherError.style.marginBottom = '1rem'
+    otherError.innerText = `Please, enter your income amount!`;
   }
 
   // Summation of all expense
@@ -75,24 +99,20 @@ const expenseValidation = () => {
   } else {
     totalExpense = "00";
   }
+
   const totalIncome = document.getElementById("total-income");
+  // Get total expense area
+  const displayExpense = document.getElementById("total-expense");
+  displayExpense.innerText = totalExpense;
 
-  
-        // Get total expense area
-        const displayExpense = document.getElementById("total-expense");
-        displayExpense.innerText = totalExpense;
-  
-        // Get balance
-        const balanceArea = document.getElementById("balance");
-        const balance = parseFloat(totalIncome.value) - totalExpense;
-        balanceArea.innerText = balance;
-  
-        // Remaining balance
-        const remainingBalanceArea = document.getElementById("remaining-balance");
-        remainingBalanceArea.innerText = balance;
+  // Get balance
+  const balanceArea = document.getElementById("balance");
+  const balance = parseFloat(totalIncome.value) - totalExpense;
+  balanceArea.innerText = balance;
 
-//   //Return the value of total expenses
-//   return totalExpense;
+  // Remaining balance
+  const remainingBalanceArea = document.getElementById("remaining-balance");
+  remainingBalanceArea.innerText = balance;
 };
 
 // Calculation
@@ -108,31 +128,20 @@ const calculation = () => {
   if (!isNaN(totalIncomeNumber)) {
     if (totalIncomeNumber < 0) {
       totalIncome.value = "";
-      incomeError.style.background = "#ffeb3b";
-      incomeError.style.color = "#000";
+      incomeError.style.display = 'block';
+      incomeError.classList.add("negative-error");
+      incomeError.classList.remove("number-error");
       incomeError.innerText = `You can't enter the negative number!`;
-      console.log('negative');
     } else {
       incomeError.style.display = "none";
-      expenseValidation()
-    //   // Get total expense area
-    //   const displayExpense = document.getElementById("total-expense");
-    //   displayExpense.innerText = expenseValidation();
-
-    //   // Get balance
-    //   const balanceArea = document.getElementById("balance");
-    //   const balance = parseFloat(totalIncome.value) - expenseValidation();
-    //   balanceArea.innerText = balance;
-
-    //   // Remaining balance
-    //   const remainingBalanceArea = document.getElementById("remaining-balance");
-    //   remainingBalanceArea.innerText = balance;
+      expenseValidation();
     }
   } else {
     totalIncome.value = "";
-    incomeError.style.background = "red";
+    incomeError.style.display = 'block';
+    incomeError.classList.add("number-error");
+    incomeError.classList.remove("negative-error");
     incomeError.innerText = `Please, enter your income amount!`;
-    console.log('amount daw');
   }
 };
 
@@ -141,7 +150,7 @@ const calculateBtn = document.getElementById("calculate-btn");
 // Add Event in calculate button
 calculateBtn.addEventListener("click", (event) => {
   calculation();
-//   savingCalculation();
+  savingCalculation();
 });
 
 // Saving validation

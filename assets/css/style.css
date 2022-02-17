@@ -69,11 +69,31 @@ body {
 }
 
 /* Error */
-.error {
+/* .error {
   width: fit-content;
   color: white;
   font-weight: 300;
   padding: 0.1rem 1rem;
   border-radius: 0.25rem;
+} */
+
+/* Negative error */
+.negative-error,
+.number-error {
+  width: fit-content;
+  font-weight: 300;
+  padding: 0.1rem 1rem;
+  border-radius: 0.25rem;
   margin-top: -0.875rem;
+}
+/* Negative error */
+.negative-error {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+/* Number error */
+.number-error {
+  background-color: #f00;
+  color: #fff;
 }
