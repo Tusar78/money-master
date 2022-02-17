@@ -101,14 +101,24 @@ const expenseValidation = () => {
   }
 
   const totalIncome = document.getElementById("total-income");
-  // Get total expense area
-  const displayExpense = document.getElementById("total-expense");
-  displayExpense.innerText = totalExpense;
+  const moreCostError = document.getElementById('morecost-error');
 
-  // Get balance
-  const balanceArea = document.getElementById("balance");
-  const balance = parseFloat(totalIncome.value) - totalExpense;
-  balanceArea.innerText = balance;
+  if (totalExpense > totalIncome.value) {
+    moreCostError.style.display = "block";
+    moreCostError.classList.add("number-error");
+    moreCostError.classList.remove("negative-error");
+    moreCostError.style.marginTop = ".25rem";
+    moreCostError.innerText = `You have not enough money!`;
+  } else {
+    moreCostError.style.display = "none";
+    // Get total expense area
+    const displayExpense = document.getElementById("total-expense");
+    displayExpense.innerText = totalExpense;
+    // Get balance
+    const balanceArea = document.getElementById("balance");
+    const balance = parseFloat(totalIncome.value) - totalExpense;
+    balanceArea.innerText = balance;
+  }
 };
 
 // Calculation
@@ -195,7 +205,18 @@ const savingCalculation = () => {
   const totalIncomeNumber = parseFloat(totalIncomeText.value);
 
   // Calculate percent
-  const getPercent = (totalIncomeNumber * savingValidation()) / 100;
+  let getPercent;
+  if (isFinite(totalIncomeNumber)) {
+    getPercent = (totalIncomeNumber * savingValidation()) / 100;
+  } else {
+    getPercent = "00";
+  }
+
+  if (savingArea.value) {
+      
+  } else {
+      
+  }
 
   // saving amount display area
   const savingArea = document.getElementById("total-saving");
@@ -213,7 +234,6 @@ const savingCalculation = () => {
 
 // Get savings button
 const saveBtn = document.getElementById("save-btn");
-
 // Add event in saving button
 saveBtn.addEventListener("click", (event) => {
   savingCalculation();
