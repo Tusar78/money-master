@@ -26,11 +26,11 @@ const expenseValidation = () => {
       foodError.style.display = "block";
       foodError.classList.add("negative-error");
       foodError.classList.remove("number-error");
-      foodError.style.marginBottom = '1rem'
+      foodError.style.marginBottom = "1rem";
       foodError.innerText = `You can't enter the negative number!`;
     } else {
       foodCostValue = foodCostNumber;
-      foodError.style.marginBottom = ''
+      foodError.style.marginBottom = "";
       foodError.style.display = "none";
     }
   } else {
@@ -38,7 +38,7 @@ const expenseValidation = () => {
     foodError.style.display = "block";
     foodError.classList.add("number-error");
     foodError.classList.remove("negative-error");
-    foodError.style.marginBottom = '1rem'
+    foodError.style.marginBottom = "1rem";
     foodError.innerText = `Please, enter your income amount!`;
   }
 
@@ -49,11 +49,11 @@ const expenseValidation = () => {
       rentError.style.display = "block";
       rentError.classList.add("negative-error");
       rentError.classList.remove("number-error");
-      rentError.style.marginBottom = '1rem'
+      rentError.style.marginBottom = "1rem";
       rentError.innerText = `You can't enter the negative number!`;
     } else {
       rentCostValue = rentCostNumber;
-      rentError.style.marginBottom = ''
+      rentError.style.marginBottom = "";
       rentError.style.display = "none";
     }
   } else {
@@ -61,7 +61,7 @@ const expenseValidation = () => {
     rentError.style.display = "block";
     rentError.classList.add("number-error");
     rentError.classList.remove("negative-error");
-    rentError.style.marginBottom = '1rem'
+    rentError.style.marginBottom = "1rem";
     rentError.innerText = `Please, enter your income amount!`;
   }
 
@@ -72,11 +72,11 @@ const expenseValidation = () => {
       otherError.style.display = "block";
       otherError.classList.add("negative-error");
       otherError.classList.remove("number-error");
-      otherError.style.marginBottom = '1rem'
+      otherError.style.marginBottom = "1rem";
       otherError.innerText = `You can't enter the negative number!`;
     } else {
       otherCostValue = otherCostNumber;
-      otherError.style.marginBottom = ''
+      otherError.style.marginBottom = "";
       otherError.style.display = "none";
     }
   } else {
@@ -84,7 +84,7 @@ const expenseValidation = () => {
     otherError.style.display = "block";
     otherError.classList.add("number-error");
     otherError.classList.remove("negative-error");
-    otherError.style.marginBottom = '1rem'
+    otherError.style.marginBottom = "1rem";
     otherError.innerText = `Please, enter your income amount!`;
   }
 
@@ -109,10 +109,6 @@ const expenseValidation = () => {
   const balanceArea = document.getElementById("balance");
   const balance = parseFloat(totalIncome.value) - totalExpense;
   balanceArea.innerText = balance;
-
-  // Remaining balance
-  const remainingBalanceArea = document.getElementById("remaining-balance");
-  remainingBalanceArea.innerText = balance;
 };
 
 // Calculation
@@ -128,7 +124,7 @@ const calculation = () => {
   if (!isNaN(totalIncomeNumber)) {
     if (totalIncomeNumber < 0) {
       totalIncome.value = "";
-      incomeError.style.display = 'block';
+      incomeError.style.display = "block";
       incomeError.classList.add("negative-error");
       incomeError.classList.remove("number-error");
       incomeError.innerText = `You can't enter the negative number!`;
@@ -138,7 +134,7 @@ const calculation = () => {
     }
   } else {
     totalIncome.value = "";
-    incomeError.style.display = 'block';
+    incomeError.style.display = "block";
     incomeError.classList.add("number-error");
     incomeError.classList.remove("negative-error");
     incomeError.innerText = `Please, enter your income amount!`;
@@ -150,7 +146,6 @@ const calculateBtn = document.getElementById("calculate-btn");
 // Add Event in calculate button
 calculateBtn.addEventListener("click", (event) => {
   calculation();
-  savingCalculation();
 });
 
 // Saving validation
@@ -160,17 +155,30 @@ const savingValidation = () => {
   const savePercentNumber = parseFloat(savePercentText.value);
   let savePercentValue;
 
+  // Get error id
+  const savingError = document.getElementById("saving-error");
+
   // Other cost validation
   if (!isNaN(savePercentNumber)) {
     if (savePercentNumber < 0) {
       savePercentText.value = "";
-      console.log(`Your can not add negative number! other`);
+      savingError.style.display = "block";
+      savingError.classList.add("negative-error");
+      savingError.classList.remove("number-error");
+      savingError.style.marginTop = ".25rem";
+      savingError.innerText = `You can't enter the negative number!`;
     } else {
       savePercentValue = savePercentNumber;
+      savingError.style.marginTop = "0";
+      savingError.style.display = "none";
     }
   } else {
     savePercentText.value = "";
-    console.log("Please enter the valid number other");
+    savingError.style.display = "block";
+    savingError.classList.add("number-error");
+    savingError.classList.remove("negative-error");
+    savingError.style.marginTop = ".25rem";
+    savingError.innerText = `Please, enter your income amount!`;
   }
 
   if (isFinite(savePercentValue)) {
