@@ -1,6 +1,4 @@
-// Get Calculator Button
-const calculateBtn = document.getElementById("calculate-btn");
-
+// Expense validation
 const expenseValidation = () => {
   // Get all of expenses
   const foodCost = document.getElementById("food-cost");
@@ -70,27 +68,18 @@ const expenseValidation = () => {
   return totalExpense;
 };
 
+// Calculation
 const calculation = () => {
   // Get total income
   const totalIncome = document.getElementById("total-income");
   const totalIncomeNumber = parseFloat(totalIncome.value);
 
+  //   Total income validation
   if (!isNaN(totalIncomeNumber)) {
     if (totalIncomeNumber < 0) {
       totalIncome.value = "";
       alert(`You can't add a negative number`);
     } else {
-    //   // Get all of expenses
-    //   const foodCost = document.getElementById("food-cost");
-    //   const rentCost = document.getElementById("rent-cost");
-    //   const otherCost = document.getElementById("other-cost");
-
-    //   // Summation of all expense
-    //   const totalExpense =
-    //     parseFloat(foodCost.value) +
-    //     parseFloat(rentCost.value) +
-    //     parseFloat(otherCost.value);
-
       // Get total expense area
       const displayExpense = document.getElementById("total-expense");
       displayExpense.innerText = expenseValidation();
@@ -110,24 +99,49 @@ const calculation = () => {
   }
 };
 
+// Get Calculator Button
+const calculateBtn = document.getElementById("calculate-btn");
 // Add Event in calculate button
 calculateBtn.addEventListener("click", (event) => {
   calculation();
+  savingCalculation();
 });
 
-// Get savings button
-const saveBtn = document.getElementById("save-btn");
-saveBtn.addEventListener("click", (event) => {
+// Saving validation
+const savingValidation = () => {
   // get Save percent value
   const savePercentText = document.getElementById("save-percent");
   const savePercentNumber = parseFloat(savePercentText.value);
+  let savePercentValue;
 
+  // Other cost validation
+  if (!isNaN(savePercentNumber)) {
+    if (savePercentNumber < 0) {
+      savePercentText.value = "";
+      console.log(`Your can not add negative number! other`);
+    } else {
+      savePercentValue = savePercentNumber;
+    }
+  } else {
+    savePercentText.value = "";
+    console.log("Please enter the valid number other");
+  }
+
+  if (isFinite(savePercentValue)) {
+    return savePercentValue;
+  } else {
+    return `00`;
+  }
+};
+
+// Saving calculation
+const savingCalculation = () => {
   // get total income
   const totalIncomeText = document.getElementById("total-income");
   const totalIncomeNumber = parseFloat(totalIncomeText.value);
 
   // Calculate percent
-  const getPercent = (totalIncomeNumber * savePercentNumber) / 100;
+  const getPercent = (totalIncomeNumber * savingValidation()) / 100;
 
   // saving amount display area
   const savingArea = document.getElementById("total-saving");
@@ -141,4 +155,12 @@ saveBtn.addEventListener("click", (event) => {
   const remainingBalance = document.getElementById("remaining-balance");
   const balance = balanceMoney - getPercent;
   remainingBalance.innerText = balance;
+};
+
+// Get savings button
+const saveBtn = document.getElementById("save-btn");
+
+// Add event in saving button
+saveBtn.addEventListener("click", (event) => {
+  savingCalculation();
 });
