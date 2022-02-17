@@ -212,12 +212,6 @@ const savingCalculation = () => {
     getPercent = "00";
   }
 
-  if (savingArea.value) {
-      
-  } else {
-      
-  }
-
   // saving amount display area
   const savingArea = document.getElementById("total-saving");
   savingArea.innerText = getPercent;
