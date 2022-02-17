@@ -35,18 +35,23 @@ saveBtn.addEventListener('click', event => {
     const savePercentText = document.getElementById('save-percent');
     const savePercentNumber= parseFloat(savePercentText.value);
 
-    // get balance
-    const balanceArea = document.getElementById('balance'); 
-    const balanceMoney = parseFloat(balanceArea.innerText);
+    // get total income
+    const totalIncomeText = document.getElementById('total-income'); 
+    const totalIncomeNumber = parseFloat(totalIncomeText.value);
 
     // Calculate percent
-    const getPercent = (balanceMoney * savePercentNumber) / 100;
+    const getPercent = (totalIncomeNumber * savePercentNumber) / 100;
 
     // saving amount display area
     const savingArea = document.getElementById('total-saving');
     savingArea.innerText = getPercent;
 
+    // get balance
+    const balanceArea = document.getElementById('balance'); 
+    const balanceMoney = parseFloat(balanceArea.innerText);
+
     // Remaining balance 
     const remainingBalance = document.getElementById('remaining-balance');
-    remainingBalance.innerText = balanceMoney - getPercent;
+    const balance = balanceMoney - getPercent;
+    remainingBalance.innerText = balance;
 })
